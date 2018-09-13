@@ -19,7 +19,14 @@
 #ifndef __PLANE_H__
 #define __PLANE_H__
 
+#pragma push_macro("Q_FOREACH")
+#pragma push_macro("foreach")
+#undef Q_FOREACH
+#undef foreach
 #include <openvdb/openvdb.h>
+#pragma pop_macro("Q_FOREACH")
+#pragma pop_macro("foreach")
+
 
 /// @file Plane.h
 /// @brief Simple class for a plane used within the camera class. Based on Jon Maceys NGL Plane class
@@ -34,55 +41,55 @@
 /// the frustrum.
 class Plane
 {
-public:
-    /// @brief Constructor of the Plane class
-    Plane();
-    /// @brief Constructor of the Plane class
-    /// @param [in] _v1 const openvdb::Vec3f - vector 1
-    /// @param [in] _v2 const openvdb::Vec3f - vector 2
-    /// @param [in] _v3 const openvdb::Vec3f - vector 3
-    Plane(const openvdb::Vec3f &_v1,const openvdb::Vec3f &_v2,const openvdb::Vec3f &_v3);
+	public:
+		/// @brief Constructor of the Plane class
+		Plane();
+		/// @brief Constructor of the Plane class
+		/// @param [in] _v1 const openvdb::Vec3f - vector 1
+		/// @param [in] _v2 const openvdb::Vec3f - vector 2
+		/// @param [in] _v3 const openvdb::Vec3f - vector 3
+		Plane( const openvdb::Vec3f& _v1, const openvdb::Vec3f& _v2, const openvdb::Vec3f& _v3 );
 
-    /// @brief Destructor of the Plane class
-    ~Plane();
+		/// @brief Destructor of the Plane class
+		~Plane();
 
-    /// @brief Set the plane
-    /// @param [in] _v1 const openvdb::Vec3f - vector 1
-    /// @param [in] _v2 const openvdb::Vec3f - vector 2
-    /// @param [in] _v3 const openvdb::Vec3f - vector 3
-    void set(const openvdb::Vec3f &_v1,const openvdb::Vec3f &_v2,const openvdb::Vec3f &_v3);
+		/// @brief Set the plane
+		/// @param [in] _v1 const openvdb::Vec3f - vector 1
+		/// @param [in] _v2 const openvdb::Vec3f - vector 2
+		/// @param [in] _v3 const openvdb::Vec3f - vector 3
+		void set( const openvdb::Vec3f& _v1, const openvdb::Vec3f& _v2, const openvdb::Vec3f& _v3 );
 
-    /// @brief Set normal of the point on the plane
-    /// @param [in] _normal const openvdb::Vec3f - normal to set to
-    /// @param [in] _point const openvdb::Vec3f - point to set the normal on
-    void setNormal(const openvdb::Vec3f &_normal, const openvdb::Vec3f &_point);
+		/// @brief Set normal of the point on the plane
+		/// @param [in] _normal const openvdb::Vec3f - normal to set to
+		/// @param [in] _point const openvdb::Vec3f - point to set the normal on
+		void setNormal( const openvdb::Vec3f& _normal, const openvdb::Vec3f& _point );
 
-    /// @brief Method to set the plane floats
-    /// @param [in] _a float - float a
-    /// @param [in] _b float - float b
-    /// @param [in] _c float - float c
-    /// @param [in] _d float - float d
-    void setFloats(	float _a,	float _b,	float _c,	float _d );
+		/// @brief Method to set the plane floats
+		/// @param [in] _a float - float a
+		/// @param [in] _b float - float b
+		/// @param [in] _c float - float c
+		/// @param [in] _d float - float d
+		void setFloats(	float _a,	float _b,	float _c,	float _d );
 
-    /// @brief Get the distance between this plane and a point - returns float
-    /// @param _p const openvdb::Vec3f - point to calculate distance to
-    float distance(const openvdb::Vec3f &_p);
+		/// @brief Get the distance between this plane and a point - returns float
+		/// @param _p const openvdb::Vec3f - point to calculate distance to
+		float distance( const openvdb::Vec3f& _p );
 
-    /// @brief Method to get the normal of the plane - return openvdb::Vec3f
-    inline openvdb::Vec3f getNormal() {return m_normal;}
-    /// @brief Method to get the point - returns openvdb::Vec3f
-    inline openvdb::Vec3f getPoint() {return m_point;}
+		/// @brief Method to get the normal of the plane - return openvdb::Vec3f
+		inline openvdb::Vec3f getNormal() {return m_normal;}
+		/// @brief Method to get the point - returns openvdb::Vec3f
+		inline openvdb::Vec3f getPoint() {return m_point;}
 
-    /// @brief Return the value D - returns float
-    inline float getD() {return m_d;}
+		/// @brief Return the value D - returns float
+		inline float getD() {return m_d;}
 
-private:
-    /// @brief Normal of the plane
-    openvdb::Vec3f m_normal;
-    /// @brief Point on the plane
-    openvdb::Vec3f m_point;
-    /// @brief Value D
-    float m_d;
+	private:
+		/// @brief Normal of the plane
+		openvdb::Vec3f m_normal;
+		/// @brief Point on the plane
+		openvdb::Vec3f m_point;
+		/// @brief Value D
+		float m_d;
 
 };
 

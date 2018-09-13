@@ -23,13 +23,20 @@
 #include <vector>
 
 #ifdef DARWIN
-    #include <OpenGL/gl3.h>
-    #include <OpenGL/glext.h>
+#include <OpenGL/gl3.h>
+#include <OpenGL/glext.h>
 #else
-    #include <GL/gl.h>
+#include <GL/gl.h>
 #endif
 
+#pragma push_macro("Q_FOREACH")
+#pragma push_macro("foreach")
+#undef Q_FOREACH
+#undef foreach
 #include <openvdb/openvdb.h>
+#pragma pop_macro("Q_FOREACH")
+#pragma pop_macro("foreach")
+
 
 /// @file Utilities.h
 /// @brief File containing generic utility functions used throughout the application
@@ -40,48 +47,48 @@
 /// Initial Version 05/01/2014
 
 /// @brief 2 times PI
-const static float ud_TWO_PI= float(2*M_PI);
+const static float ud_TWO_PI = float( 2 * M_PI );
 /// @brief Value of PI
-const static float ud_PI=float(M_PI);
+const static float ud_PI = float( M_PI );
 /// @brief PI divided by 2
-const static float ud_PI2=float(M_PI/2.0);
+const static float ud_PI2 = float( M_PI / 2.0 );
 /// @brief PI divided by 4
-const static float ud_PI4=float(M_PI/4.0);
+const static float ud_PI4 = float( M_PI / 4.0 );
 
 /// @namespace Utilities
 namespace Utilities
 {
-    /// @brief Method to convert degrees to radians - returns float
-    /// @param [in] _deg const float - degrees passed in
-    float u_radians(const float _deg);
-    /// @brief Method to convert radians into degrees - returns float
-    /// @param [in] _rad const float - radians passed in
-    float u_degrees(const float _rad);
-    /// @brief Method to convert a GLubyte to a string - returns std::string
-    /// @param [in] _in const GLubyte* - values passed in
-    std::string glubyteToStdString(const GLubyte *_in);
-    /// @brief Method to convert an openvdb::Coord to a string - returns std::string
-    /// @param [in] _in const openvdb::Coord - coord to convert
-    std::string vdbCoordToStdString(const openvdb::Coord _in);
-    /// @brief convert a level to a colour value - returns openvdb::Vec3f
-    /// @param [in] _level int - level to return as colour
-    openvdb::Vec3f getColourFromLevel(int _level);
-    /// @brief Check for a GLError - returns GLenum
-    GLenum checkGLError();
-    /// @brief Expand Matrix3x3 to a float array - returns std::vector<GLfloat>
-    /// @param [in] _in openvdb::Mat3R - matrix to flatten
-    std::vector<GLfloat> u_Mat3ToFloatArray(openvdb::Mat3R _in);
-    /// @brief Expand Matrix4x4 to a float array - returns std::vector<GLfloat>
-    /// @param [in] _in openvdb::Mat4s - matrix to flatten
-    std::vector<GLfloat> u_Mat4ToFloatArray(openvdb::Mat4s _in);
-    /// @brief Report that not external GPU device is attached
-    inline void printNoExtGPU() {std::cout<<"No external GPU connected - current available GPU memory is not available"<<std::endl;}
-    /// @brief Report that AMD is not currently supported in this application for memeory querying
-    inline void printAMDNotSupported() {std::cout<<"AMD graphic cards currently not supported"<<std::endl;}
-    /// @brief Modify file paths if necessary due to platform being built on
-    /// @param [in] _path std::string - path to modify
-    /// @returns std::string
-    std::string PLATFORM_FILE_PATH(std::string _path);
+	/// @brief Method to convert degrees to radians - returns float
+	/// @param [in] _deg const float - degrees passed in
+	float u_radians( const float _deg );
+	/// @brief Method to convert radians into degrees - returns float
+	/// @param [in] _rad const float - radians passed in
+	float u_degrees( const float _rad );
+	/// @brief Method to convert a GLubyte to a string - returns std::string
+	/// @param [in] _in const GLubyte* - values passed in
+	std::string glubyteToStdString( const GLubyte* _in );
+	/// @brief Method to convert an openvdb::Coord to a string - returns std::string
+	/// @param [in] _in const openvdb::Coord - coord to convert
+	std::string vdbCoordToStdString( const openvdb::Coord _in );
+	/// @brief convert a level to a colour value - returns openvdb::Vec3f
+	/// @param [in] _level int - level to return as colour
+	openvdb::Vec3f getColourFromLevel( int _level );
+	/// @brief Check for a GLError - returns GLenum
+	GLenum checkGLError();
+	/// @brief Expand Matrix3x3 to a float array - returns std::vector<GLfloat>
+	/// @param [in] _in openvdb::Mat3R - matrix to flatten
+	std::vector<GLfloat> u_Mat3ToFloatArray( openvdb::Mat3R _in );
+	/// @brief Expand Matrix4x4 to a float array - returns std::vector<GLfloat>
+	/// @param [in] _in openvdb::Mat4s - matrix to flatten
+	std::vector<GLfloat> u_Mat4ToFloatArray( openvdb::Mat4s _in );
+	/// @brief Report that not external GPU device is attached
+	inline void printNoExtGPU() {std::cout << "No external GPU connected - current available GPU memory is not available" << std::endl;}
+	/// @brief Report that AMD is not currently supported in this application for memeory querying
+	inline void printAMDNotSupported() {std::cout << "AMD graphic cards currently not supported" << std::endl;}
+	/// @brief Modify file paths if necessary due to platform being built on
+	/// @param [in] _path std::string - path to modify
+	/// @returns std::string
+	std::string PLATFORM_FILE_PATH( std::string _path );
 }
 
 #endif /* __UTILITIES_H__ */
