@@ -49,6 +49,8 @@ HALF_LIB_PATH = /usr/local/lib
 BOOST_INC_DIR = /usr/local/include
 ######################################################################################################
 
+QMAKE_CXXFLAGS += -std=c++14
+
 TARGET=OpenVDBViewer
 
 MOC_DIR=moc
