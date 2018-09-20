@@ -344,6 +344,10 @@ class MainWindow : public QMainWindow
 		void timerEvent( QTimerEvent* );
 		/// @brief Clear the information table of data
 		void clearInfoTable();
+
+		void dragEnterEvent( QDragEnterEvent* event ) override;
+
+		void dropEvent( QDropEvent* event ) override;
 };
 
 #endif /* __MAINWINDOW_H__ */

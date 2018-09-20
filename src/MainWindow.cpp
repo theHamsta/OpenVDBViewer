@@ -21,8 +21,9 @@
 #include <iostream>
 
 #include <QFileDialog>
-
+#include <QMimeData>
 #include <QApplication>
+#include <QFileInfo>
 
 #include "BoundBox.h"
 #include "Utilities.h"
@@ -33,6 +34,7 @@ MainWindow::MainWindow( QWidget* parent ) : QMainWindow( parent ),  m_ui( new Ui
 {
 	m_ui->setupUi( this );
 	initGLWidget();
+	setAcceptDrops( true );
 }
 
 MainWindow::~MainWindow()
@@ -1450,4 +1452,23 @@ void MainWindow::openAbout()
 void MainWindow::clearInfoTable()
 {
 	m_infoWindow.clearInfoTable();
+}
+
+
+void MainWindow::dragEnterEvent( QDragEnterEvent* event )
+{
+	if ( event->mimeData()->hasUrls() )
+		event->acceptProposedAction();
+}
+
+void MainWindow::dropEvent( QDropEvent* event )
+{
+	if ( event->mimeData()->hasUrls() ) {
+		QFileInfo info ( event->mimeData()->urls()[0].toLocalFile() );
+
+		if ( info.isFile() ) {
+			openFile( info.canonicalFilePath() );
+			event->acceptProposedAction();
+		}
+	}
 }
