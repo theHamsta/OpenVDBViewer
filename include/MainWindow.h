@@ -122,7 +122,7 @@
 
 namespace Ui
 {
-    class MWindow;
+	class MWindow;
 }
 
 /// @file MainWindow.h
@@ -137,211 +137,213 @@ namespace Ui
 /// with the GLWindow class
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+		Q_OBJECT
 
-public:
-    /// @brief Constructor for the MainWindow class
-    /// @param [in] parent QWidget* - parent of this class
-    explicit MainWindow(QWidget *parent = 0);
-    /// @brief Destructor of the MainWindow class
-    ~MainWindow();
-    /// @brief Initialise the GL Widget
-    void initGLWidget();
-    /// @brief Method to connect up all signals and slots
-    void connectAndInit();
-    /// @brief Set startup values
-    void setStartup();
-    /// @brief Set the crop box limits
-    void setCropLimits();
-    /// @brief Retrieve and display information about the hardware
-    void getHardwareInformation();
-    /// @brief Retrieve and display information about the file
-    void getFileInformation();
+	public:
+		/// @brief Constructor for the MainWindow class
+		/// @param [in] parent QWidget* - parent of this class
+		explicit MainWindow( QWidget* parent = 0 );
+		/// @brief Destructor of the MainWindow class
+		~MainWindow();
+		/// @brief Initialise the GL Widget
+		void initGLWidget();
+		/// @brief Method to connect up all signals and slots
+		void connectAndInit();
+		/// @brief Set startup values
+		void setStartup();
+		/// @brief Set the crop box limits
+		void setCropLimits();
+		/// @brief Retrieve and display information about the hardware
+		void getHardwareInformation();
+		/// @brief Retrieve and display information about the file
+		void getFileInformation();
 
-public slots:
-    /// @brief Method to set the vector length
-    void setVectorLength();
-    /// @brief Method to set the Level of Detail
-    void setLOD();
-    /// @brief Set the point size glPointSize
-    void setPointSize();
-    /// @brief Set the speed of the scan
-    void setScanSpeed();
-    /// @brief Set the line width glLineWidth
-    void setLineWidth();
-    /// @brief start a scan (currently only works for one axis, although expansion has been written in)
-    void startSingleAxisScan();
-    /// @brief Stop any running scans
-    void stopScan();
-    /// @brief Fill the combo box with the available crop boxes
-    void fillNumSlices();
-    /// @brief Pause and Resume scans dependant on their current state
-    void pauseResumeScan();
-    /// @brief Use crop boxes
-    void useCrop();
-    /// @brief Set the colour of vectors
-    void setVectorColour();
-    /// @brief Toggle the drawing of the mesh
-    void toggleMesh();
-    /// @brief Toggle whether or not a colour map is applied
-    void setColourMapApplied();
-    /// @brief Toggle whether vector colour selection boxes are enabled
-    void toggleVectorColourEnabled();
-    /// @brief Set inversion of colour boolean
-    void setVectorInvert();
-    /// @brief Set the channel to render from the front screen
-    void setRenderChannelFromRenderTab();
-    /// @brief Set the channel to use for the vectors
-    void setVectorChannel();
-    /// @brief Set the width of the X scan
-    void setScanXWidth();
-    /// @brief Set the height of the Y scan
-    void setScanYHeight();
-    /// @brief Set the depth of the Z scan
-    void setScanZDepth();
-    /// @brief Read crop details and set to current crop
-    void setCrop();
-    /// @brief Retrieve details of current crop and fill in value boxes
-    void fillCropDetails();
-    /// @brief Update the current used GPU memory in the information window
-    void updateUsedGPUMem();
-    /// @brief Open a VDB file from a file dialog
-    void openFile();
-    /// @brief Clear data
-    void clear();
-    /// @brief Quit the application
-    void quitApp();
-    /// @brief Remove only the high resolution mesh
-    void removeMesh();
-    /// @brief Set colour ramp onto points or channel
-    void setRampPoints();
-    /// @brief Set Colour of colour ramp
-    void setRampColour();
-    /// @brief Set the colour ramp to be user defined
-    void setUserRamp();
-    /// @brief Set the minimum of the colour ramp
-    /// @param [in] _updateGL bool - whether to update GL when setting values or not
-    void setRampMin(bool _updateGL=true);
-    /// @brief Set the maximum of the colour ramp
-    /// @param [in] _updateGL bool - whether to update GL when setting values or not
-    void setRampMax(bool _updateGL=true);
+	public slots:
+		/// @brief Method to set the vector length
+		void setVectorLength();
+		/// @brief Method to set the Level of Detail
+		void setLOD();
+		/// @brief Set the point size glPointSize
+		void setPointSize();
+		/// @brief Set the speed of the scan
+		void setScanSpeed();
+		/// @brief Set the line width glLineWidth
+		void setLineWidth();
+		/// @brief start a scan (currently only works for one axis, although expansion has been written in)
+		void startSingleAxisScan();
+		/// @brief Stop any running scans
+		void stopScan();
+		/// @brief Fill the combo box with the available crop boxes
+		void fillNumSlices();
+		/// @brief Pause and Resume scans dependant on their current state
+		void pauseResumeScan();
+		/// @brief Use crop boxes
+		void useCrop();
+		/// @brief Set the colour of vectors
+		void setVectorColour();
+		/// @brief Toggle the drawing of the mesh
+		void toggleMesh();
+		/// @brief Toggle whether or not a colour map is applied
+		void setColourMapApplied();
+		/// @brief Toggle whether vector colour selection boxes are enabled
+		void toggleVectorColourEnabled();
+		/// @brief Set inversion of colour boolean
+		void setVectorInvert();
+		/// @brief Set the channel to render from the front screen
+		void setRenderChannelFromRenderTab();
+		/// @brief Set the channel to use for the vectors
+		void setVectorChannel();
+		/// @brief Set the width of the X scan
+		void setScanXWidth();
+		/// @brief Set the height of the Y scan
+		void setScanYHeight();
+		/// @brief Set the depth of the Z scan
+		void setScanZDepth();
+		/// @brief Read crop details and set to current crop
+		void setCrop();
+		/// @brief Retrieve details of current crop and fill in value boxes
+		void fillCropDetails();
+		/// @brief Update the current used GPU memory in the information window
+		void updateUsedGPUMem();
+		/// @brief Open a VDB file from a file dialog
+		void openFile();
+		/// @brief Open a VDB file by a given filename
+		void openFile( QString filename );
+		/// @brief Clear data
+		void clear();
+		/// @brief Quit the application
+		void quitApp();
+		/// @brief Remove only the high resolution mesh
+		void removeMesh();
+		/// @brief Set colour ramp onto points or channel
+		void setRampPoints();
+		/// @brief Set Colour of colour ramp
+		void setRampColour();
+		/// @brief Set the colour ramp to be user defined
+		void setUserRamp();
+		/// @brief Set the minimum of the colour ramp
+		/// @param [in] _updateGL bool - whether to update GL when setting values or not
+		void setRampMin( bool _updateGL = true );
+		/// @brief Set the maximum of the colour ramp
+		/// @param [in] _updateGL bool - whether to update GL when setting values or not
+		void setRampMax( bool _updateGL = true );
 
-private slots:
-    /// @brief Reset the crop slider to 0 if released
-    void resetCropSlider();
-    /// @brief Set channel vectors enabled
-    void toggleChannelVectors();
-    /// @brief Start the timer for manual crop move
-    void startCropSlideTimer();
-    /// @brief Stop the timer for manual crop move
-    void stopCropSlideTimer();
-    /// @brief Set manual crop delta
-    void updateCropSlideValue();
-    /// @brief Set details for Cull 1
-    void setCull1Type();
-    /// @brief Set details for Cull 2
-    void setCull2Type();
-    /// @brief Set details for Cull 3
-    void setCull3Type();
-    /// @brief Set cull calculation type for Cull 1
-    void setCull1Boolean();
-    /// @brief Set cull calculation type for Cull 2
-    void setCull2Boolean();
-    /// @brief Set cull calculation type for Cull 3
-    void setCull3Boolean();
-    /// @brief Enable range selection boxes for cull 1
-    /// @param [in] _enabled bool - set enabled or not
-    void enableCull1RangeBoxes(bool _enabled);
-    /// @brief Enable range selection boxes for cull 2
-    ////// @param [in] _enabled bool - set enabled or not
-    void enableCull2RangeBoxes(bool _enabled);
-    /// @brief Enable range selection boxes for cull 3
-    ////// @param [in] _enabled bool - set enabled or not
-    void enableCull3RangeBoxes(bool _enabled);
-    /// @brief Set culling enabled if at least 1 cull is active
-    void setCullingEnabled();
-    /// @brief Send details for Cull 1 to GLWindow
-    void setCull1Values();
-    /// @brief Send details for Cull 2 to GLWindow
-    void setCull2Values();
-    /// @brief Send details for Cull 3 to GLWindow
-    void setCull3Values();
-    /// @brief Set the ramp to a cull
-    void setCullToChannel();
-    /// @brief Specify which cull to apply the ramp tp
-    void setCullToChannelNumber();
-    /// @brief Show the information window
-    void showInformation();
-    /// @brief open the about dialog
-    void openAbout();
+	private slots:
+		/// @brief Reset the crop slider to 0 if released
+		void resetCropSlider();
+		/// @brief Set channel vectors enabled
+		void toggleChannelVectors();
+		/// @brief Start the timer for manual crop move
+		void startCropSlideTimer();
+		/// @brief Stop the timer for manual crop move
+		void stopCropSlideTimer();
+		/// @brief Set manual crop delta
+		void updateCropSlideValue();
+		/// @brief Set details for Cull 1
+		void setCull1Type();
+		/// @brief Set details for Cull 2
+		void setCull2Type();
+		/// @brief Set details for Cull 3
+		void setCull3Type();
+		/// @brief Set cull calculation type for Cull 1
+		void setCull1Boolean();
+		/// @brief Set cull calculation type for Cull 2
+		void setCull2Boolean();
+		/// @brief Set cull calculation type for Cull 3
+		void setCull3Boolean();
+		/// @brief Enable range selection boxes for cull 1
+		/// @param [in] _enabled bool - set enabled or not
+		void enableCull1RangeBoxes( bool _enabled );
+		/// @brief Enable range selection boxes for cull 2
+		////// @param [in] _enabled bool - set enabled or not
+		void enableCull2RangeBoxes( bool _enabled );
+		/// @brief Enable range selection boxes for cull 3
+		////// @param [in] _enabled bool - set enabled or not
+		void enableCull3RangeBoxes( bool _enabled );
+		/// @brief Set culling enabled if at least 1 cull is active
+		void setCullingEnabled();
+		/// @brief Send details for Cull 1 to GLWindow
+		void setCull1Values();
+		/// @brief Send details for Cull 2 to GLWindow
+		void setCull2Values();
+		/// @brief Send details for Cull 3 to GLWindow
+		void setCull3Values();
+		/// @brief Set the ramp to a cull
+		void setCullToChannel();
+		/// @brief Specify which cull to apply the ramp tp
+		void setCullToChannelNumber();
+		/// @brief Show the information window
+		void showInformation();
+		/// @brief open the about dialog
+		void openAbout();
 
-private:
-    /// @brief The ui for the main window
-    Ui::MWindow *m_ui;
-    /// @brief The information window
-    InformationWindow m_infoWindow;
-    /// @brief the About window
-    AboutWindow m_aboutWindow;
-    /// @brief GLWidget where all GL rendering happens
-    GLWindow *m_glWindow;
+	private:
+		/// @brief The ui for the main window
+		Ui::MWindow* m_ui;
+		/// @brief The information window
+		InformationWindow m_infoWindow;
+		/// @brief the About window
+		AboutWindow m_aboutWindow;
+		/// @brief GLWidget where all GL rendering happens
+		GLWindow* m_glWindow;
 
-private:
-    /// @brief boolean to specify if the crop should be read or not
-    bool m_readCrop;
-    /// @brief Automatic toggle Crop settings
-    void toggleCropSettings();
-    /// @brief Manual toggle Crop settings
-    /// @param [in] _enabled bool - set whether they are enabled or not
-    void toggleCropSettings(bool _enabled);
-    /// @brief Automatic toggle Scan controls
-    void toggleScanControls();
-    /// @brief Manual toggle Scan controls
-    /// @param [in] _enabled bool - set whether they are enabled or not
-    void toggleScanControls(bool _enabled);
-    /// @brief Set which channel to render
-    void setRenderChannel(int _index);
-    /// @brief Enable the controls for the colour ramp
-    void enableColourRampUserControls();
-    /// @brief Event handler for a key press
-    /// @param [in] _event QKeyEvent* - the triggered event
-    void keyPressEvent(QKeyEvent *_event);
-    /// @brief Event handler for a key release
-    /// @param [in] _event QKeyEvent* - the triggered event
-    void keyReleaseEvent(QKeyEvent *_event);
-    /// @brief Event handler for a close event
-    void closeEvent (QCloseEvent *);
-    /// @brief Clear all channel combo boxes
-    void clearChannelCombos();
-    /// @brief Fill all channel combo boxes
-    void fillChannelCombos();
-    /// @brief Enable Channel selection combo boxes
-    /// @param [in] _enabled bool - whether enabled or not
-    void setChannelCombosEnabled(bool _enabled);
-    /// @brief Enable Channel selection combo boxes
-    /// @param [in] _enabled bool - whether enabled or not
-    void setPointChannelsEnabled(bool _enabled);
-    /// @brief Data storing which index from colour ramp to cull
-    int m_cullToComboMap[3];
-    /// @brief Boolean of whether to update GL when setting culls data
-    bool m_renderNewCullColour;
-    /// @brief Set extremes for Cull 1
-    void setCull1Extremes();
-    /// @brief Set extremes for Cull 2
-    void setCull2Extremes();
-    /// @brief Set extremes for Cull 3
-    void setCull3Extremes();
-    /// @brief Set the max and min values for the passed in spin box
-    /// @param [in] _box QDoubleSpinBox* - the box to set the max and min values to
-    /// @param [in] _min float - the minimum value to set
-    /// @param [in] _max float - the maximum value to set
-    void setCullSpinBoxesMaxMin(QDoubleSpinBox *_box, float _min, float _max);
-    /// @brief Timer used for the crop slider manual move
-    int m_cropSlideTimer;
-    /// @brief Event triggered in every execution of the timer
-    /// @param [in] QTimerEvent*
-    void timerEvent(QTimerEvent *);
-    /// @brief Clear the information table of data
-    void clearInfoTable();
+	private:
+		/// @brief boolean to specify if the crop should be read or not
+		bool m_readCrop;
+		/// @brief Automatic toggle Crop settings
+		void toggleCropSettings();
+		/// @brief Manual toggle Crop settings
+		/// @param [in] _enabled bool - set whether they are enabled or not
+		void toggleCropSettings( bool _enabled );
+		/// @brief Automatic toggle Scan controls
+		void toggleScanControls();
+		/// @brief Manual toggle Scan controls
+		/// @param [in] _enabled bool - set whether they are enabled or not
+		void toggleScanControls( bool _enabled );
+		/// @brief Set which channel to render
+		void setRenderChannel( int _index );
+		/// @brief Enable the controls for the colour ramp
+		void enableColourRampUserControls();
+		/// @brief Event handler for a key press
+		/// @param [in] _event QKeyEvent* - the triggered event
+		void keyPressEvent( QKeyEvent* _event );
+		/// @brief Event handler for a key release
+		/// @param [in] _event QKeyEvent* - the triggered event
+		void keyReleaseEvent( QKeyEvent* _event );
+		/// @brief Event handler for a close event
+		void closeEvent ( QCloseEvent* );
+		/// @brief Clear all channel combo boxes
+		void clearChannelCombos();
+		/// @brief Fill all channel combo boxes
+		void fillChannelCombos();
+		/// @brief Enable Channel selection combo boxes
+		/// @param [in] _enabled bool - whether enabled or not
+		void setChannelCombosEnabled( bool _enabled );
+		/// @brief Enable Channel selection combo boxes
+		/// @param [in] _enabled bool - whether enabled or not
+		void setPointChannelsEnabled( bool _enabled );
+		/// @brief Data storing which index from colour ramp to cull
+		int m_cullToComboMap[3];
+		/// @brief Boolean of whether to update GL when setting culls data
+		bool m_renderNewCullColour;
+		/// @brief Set extremes for Cull 1
+		void setCull1Extremes();
+		/// @brief Set extremes for Cull 2
+		void setCull2Extremes();
+		/// @brief Set extremes for Cull 3
+		void setCull3Extremes();
+		/// @brief Set the max and min values for the passed in spin box
+		/// @param [in] _box QDoubleSpinBox* - the box to set the max and min values to
+		/// @param [in] _min float - the minimum value to set
+		/// @param [in] _max float - the maximum value to set
+		void setCullSpinBoxesMaxMin( QDoubleSpinBox* _box, float _min, float _max );
+		/// @brief Timer used for the crop slider manual move
+		int m_cropSlideTimer;
+		/// @brief Event triggered in every execution of the timer
+		/// @param [in] QTimerEvent*
+		void timerEvent( QTimerEvent* );
+		/// @brief Clear the information table of data
+		void clearInfoTable();
 };
 
 #endif /* __MAINWINDOW_H__ */

@@ -17,13 +17,25 @@
 
 
 #include <QApplication>
+#include <QFileInfo>
 #include "MainWindow.h"
 
-int main(int argc, char **argv)
+int main( int argc, char** argv )
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    w.connectAndInit();
-    return a.exec();
+	QApplication a( argc, argv );
+	MainWindow w;
+	w.show();
+	w.connectAndInit();
+
+	if ( argc == 2 ) {
+		QString arg1 = QString::fromLatin1( argv[1] );
+		QFileInfo fileInfo( arg1 );
+
+		if ( fileInfo.isFile() ) {
+			w.openFile( fileInfo.canonicalFilePath()  );
+
+		}
+	}
+
+	return a.exec();
 }
