@@ -33,7 +33,8 @@ int main( int argc, char** argv )
 
 		if ( fileInfo.isFile() ) {
 			w.openFile( fileInfo.canonicalFilePath()  );
-
+		} else {
+			qDebug() << "Could not find file" << fileInfo;
 		}
 	}
 
