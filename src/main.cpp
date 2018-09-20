@@ -18,6 +18,7 @@
 
 #include <QApplication>
 #include <QFileInfo>
+#include <QDebug>
 #include "MainWindow.h"
 
 int main( int argc, char** argv )
@@ -34,7 +35,7 @@ int main( int argc, char** argv )
 		if ( fileInfo.isFile() ) {
 			w.openFile( fileInfo.canonicalFilePath()  );
 		} else {
-			qDebug() << "Could not find file" << fileInfo;
+			qDebug() << "Could not find file" << fileInfo.path();
 		}
 	}
 
