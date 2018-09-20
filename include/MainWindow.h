@@ -344,9 +344,9 @@ class MainWindow : public QMainWindow
 		void timerEvent( QTimerEvent* );
 		/// @brief Clear the information table of data
 		void clearInfoTable();
-
+		/// @brief Implement dragEnterEvent to check for dropped VDB files
 		void dragEnterEvent( QDragEnterEvent* event ) override;
-
+		/// @brief Open dropped VDB file
 		void dropEvent( QDropEvent* event ) override;
 };
 
