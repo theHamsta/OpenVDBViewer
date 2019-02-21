@@ -1457,8 +1457,12 @@ void MainWindow::clearInfoTable()
 
 void MainWindow::dragEnterEvent( QDragEnterEvent* event )
 {
-	if ( event->mimeData()->hasUrls() )
-		event->acceptProposedAction();
+	if ( event->mimeData()->hasUrls() ) {
+		QFileInfo info ( event->mimeData()->urls()[0].toLocalFile() );
+		if ( info.isFile() && info.suffix().toLower() == "vdb") {
+            event->acceptProposedAction();
+        }
+    }
 }
 
 void MainWindow::dropEvent( QDropEvent* event )
@@ -1466,7 +1470,7 @@ void MainWindow::dropEvent( QDropEvent* event )
 	if ( event->mimeData()->hasUrls() ) {
 		QFileInfo info ( event->mimeData()->urls()[0].toLocalFile() );
 
-		if ( info.isFile() ) {
+		if ( info.isFile() && info.suffix().toLower() == "vdb") {
 			openFile( info.canonicalFilePath() );
 			event->acceptProposedAction();
 		}
