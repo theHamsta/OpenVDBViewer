@@ -19,6 +19,7 @@
 #ifndef __VDB_H__
 #define __VDB_H__
 
+#ifndef Q_MOC_RUN
 #pragma push_macro("Q_FOREACH")
 #pragma push_macro("foreach")
 #undef Q_FOREACH
@@ -26,6 +27,7 @@
 #include <openvdb/openvdb.h>
 #pragma pop_macro("Q_FOREACH")
 #pragma pop_macro("foreach")
+#endif
 
 
 #include "ShaderLibrary.h"

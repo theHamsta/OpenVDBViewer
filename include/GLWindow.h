@@ -31,10 +31,12 @@
     #include <GL/gl.h>
 #endif
 
+#ifndef Q_MOC_RUN
 #include "Camera.h"
 #include "VDB.h"
 #include "Grid.h"
 #include "Types.h"
+#endif
 
 #include <QEvent>
 #include <QResizeEvent>
